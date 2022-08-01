@@ -20,6 +20,7 @@ final class CityListViewModel: ObservableObject{
     var cityForecastSearchData: CityForecastSearchData? = nil
     @Published var citiesListData: [CitiesListData] = []
     var temperatureValue: Double?
+    @Published var temperatureSwitchToggle: Bool = false
     
     init() {
        

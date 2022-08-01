@@ -86,7 +86,7 @@ class CityListViewModelTests: XCTestCase {
     func testUpdateCitiesListData() throws {
         let citiesListUpdatedExpectation = self.expectation(description: "cities List updated expectation")
         // Mock Data
-        let currentCondition = CurrentCondition(temperature: Temperature(value: 25, unitCode: TemperatureUnit.degrees.rawValue), windSpeed: WindSpeed(value: 15, unitCode: "km/hr"), relativeHumidity: Humidity(value: 55), icon: "icon-url")
+        let currentCondition = CurrentCondition(temperature: Temperature(value: 25, unitCode: TemperatureUnit.celcius.rawValue), windSpeed: WindSpeed(value: 15, unitCode: "km/hr"), relativeHumidity: Humidity(value: 55), icon: "icon-url")
         
         viewModel.updateCitiesList(data: currentCondition, city: "Cupertino, USA") { result in
             XCTAssertTrue(result)

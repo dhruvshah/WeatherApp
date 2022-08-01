@@ -26,20 +26,27 @@ final class CityForecastViewModel: ObservableObject{
     let temperatureValue: String
     
     let weeklyForecastHeading: String = Localized.weeklyForecast
+    let temperatureSwitchToggle: Bool
     
     var forecast: Forecast? = nil
     @Published var forecastProperties: [ForecastData] = []
     
-    init(cityData: CitiesListData) {
+    init(cityData: CitiesListData, temperatureSwitchToggle: Bool) {
         self.cityData = cityData
         self.properties = cityData.properties
-        self.temperatureValue = cityData.farenheitTemperatureValue
+
+        if temperatureSwitchToggle {
+            self.temperatureValue = cityData.celciusTemperatureValue
+        }else {
+            self.temperatureValue = cityData.farenheitTemperatureValue
+        }
         self.windSpeedValue = WindSpeed.getWindSpeedValue(windSpeed: properties.windSpeed)
         self.humidityValue = Humidity.getHumiditydValue(humidity: properties.relativeHumidity)
         self.precipitationValue = properties.dewpoint?.value?.description ?? ""
         self.weatherSummary = cityData.properties.textDescription ?? ""
         self.forecastAPI = cityData.forecastSearchData?.forecast ?? ""
         self.forecastHourlyAPI = cityData.forecastSearchData?.forecastHourly ?? ""
+        self.temperatureSwitchToggle = temperatureSwitchToggle
     }
     
     func onAppear() {
@@ -60,6 +67,10 @@ final class CityForecastViewModel: ObservableObject{
     }
     
     func getTemperatureValue(temperature: Int, temperatureUnit: String) -> String {
+        if temperatureSwitchToggle {
+            let temperatureCelcius = Temperature.temperatureInCelsius(fahrenheit: temperature)
+            return "\(temperatureCelcius) " + Localized.celcius
+        }
         return "\(temperature) \(temperatureUnit)"
     }
     

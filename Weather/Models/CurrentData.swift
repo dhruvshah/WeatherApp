@@ -8,7 +8,7 @@
 import Foundation
 
 enum TemperatureUnit: String {
-    case degrees = "wmoUnit:degC"
+    case celcius = "wmoUnit:degC"
     case farenheit = "wmoUnit:degF"
 }
 

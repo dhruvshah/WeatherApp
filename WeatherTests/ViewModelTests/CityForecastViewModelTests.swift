@@ -10,18 +10,20 @@ import XCTest
 
 class CityForecastViewModelTests: XCTestCase {
     private var viewModel: CityForecastViewModel!
+    private var citiesData: CitiesListData!
 
     override func setUp() {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     super.setUp()
         //Mock Data
         let forecastURL = "https://api.weather.gov/gridpoints/OKX/32,34/forecast"
-        let citiesData = CitiesListData(city: "Cupertino, USA", celciusTemperatureValue: "25 °C", farenheitTemperatureValue: "70 °F", icon: "icon-url", properties: CurrentCondition(temperature: Temperature(value: 24, unitCode: ""), dewpoint: DewPoint(value: 34, unitCode: ""), windSpeed: WindSpeed(value: 23, unitCode: WindSpeedUnit.kmPerHour.rawValue), relativeHumidity: Humidity(value: 12)),forecastSearchData: CityForecastSearchData(forecast: forecastURL, forecastHourly: ""))
-        viewModel = CityForecastViewModel(cityData: citiesData)
+        citiesData = CitiesListData(city: "Chicago, USA", celciusTemperatureValue: "25 °C", farenheitTemperatureValue: "70 °F", icon: "icon-url", properties: CurrentCondition(temperature: Temperature(value: 24, unitCode: ""), dewpoint: DewPoint(value: 34, unitCode: ""), windSpeed: WindSpeed(value: 23, unitCode: WindSpeedUnit.kmPerHour.rawValue), relativeHumidity: Humidity(value: 12)),forecastSearchData: CityForecastSearchData(forecast: forecastURL, forecastHourly: ""))
+        viewModel = CityForecastViewModel(cityData: citiesData, temperatureSwitchToggle: false)
         
     }
     override func tearDown() {
         viewModel = nil
+        citiesData = nil
         super.tearDown()
     }
     
@@ -34,6 +36,16 @@ class CityForecastViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.humidityHeading, "HUMIDITY: ")
         XCTAssertEqual(viewModel.precipitationHeading, "PRECIPITATION: ")
         XCTAssertEqual(viewModel.weeklyForecastHeading, "Weekly Forecast")
+    }
+    
+    func testTemperatureValueToggleSwitchOff_Farenheit() {
+        let viewModel = CityForecastViewModel(cityData: citiesData, temperatureSwitchToggle: false)
+        XCTAssertEqual(viewModel.temperatureValue, "70 °F")
+    }
+    
+    func testTemperatureValueToggleSwitchOn_Celcius() {
+        let viewModel = CityForecastViewModel(cityData: citiesData, temperatureSwitchToggle: true)
+        XCTAssertEqual(viewModel.temperatureValue, "25 °C")
     }
     
     func testWeatherDetailValues() {
