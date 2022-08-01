@@ -5,6 +5,13 @@ User can scroll down to see more weekly forecast details.
 Ability to view temperature in Celcius or Farenheit based on switch state.
 
 #### Demo Screenshots
+- Home Screen List of Cities View
+
+<img src="https://user-images.githubusercontent.com/2280633/182059305-d5ce646b-24c1-4b51-b0fc-3fb4d643ea64.png" width=20% height=20% /> `  ` <img src="https://user-images.githubusercontent.com/2280633/182059312-0e892d0d-bf74-4ccf-a842-05c30e810755.png" width=20% height=20% /> `  `
+
+- Weekly Weather Forecast View for the particular city
+<img src="https://user-images.githubusercontent.com/2280633/182059327-93f3795a-3ff7-44b9-b740-fd153a4560eb.png" width=20% height=20% />
+
 
 ### Technical specs
 Language: Swift
