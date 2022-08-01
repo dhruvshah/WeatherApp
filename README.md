@@ -14,12 +14,12 @@ Ability to view temperature in Celcius or Farenheit based on switch state.
 
 
 ### Technical specs
-Language: Swift
-Networking: URLSession
-Design Architecture: MVVM
-ViewModels and ViewData for storing UI state
-Protocol for search types, used for generics in data manager.
-Swift standard coding/decoding for custom objects
+- Language: Swift
+- Networking: URLSession
+- Design Architecture: MVVM
+- ViewModels and ViewData for storing UI state
+- Protocol for search types, used for generics in data manager.
+- Swift standard coding/decoding for custom objects
 
 ### Features
 - List of Cities and current temperature
