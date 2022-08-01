@@ -132,12 +132,18 @@ final class CityListViewModel: ObservableObject{
     ///   - completionHandler: used to notify result of the API action.
     func updateCitiesList(data: CurrentCondition, city: String, completion: @escaping (Bool) -> Void){
         DispatchQueue.main.async {
-            guard let celciusValue = data.temperature.value else {
-                return
+            let celciusValue = data.temperature.value
+            var celciusTemperatureValue: String
+            var farenheitTemperatureValue: String
+            if celciusValue != nil {
+                celciusTemperatureValue = Temperature.getTemperatureValue(temperature: data.temperature)
+                let farenheitValue = Temperature.temperatureInFahrenheit(celcius:celciusValue ?? 0)
+                farenheitTemperatureValue = Temperature.getTemperatureValue(temperature: Temperature(value: Double(farenheitValue), unitCode: TemperatureUnit.farenheit.rawValue))
+            } else {
+                NSLog("Error getting temperature data for City: \(city)")
+                celciusTemperatureValue = ""
+                farenheitTemperatureValue = ""
             }
-            let celciusTemperatureValue = Temperature.getTemperatureValue(temperature: data.temperature)
-            let farenheitValue = Temperature.temperatureInFahrenheit(celcius:celciusValue)
-            let farenheitTemperatureValue = Temperature.getTemperatureValue(temperature: Temperature(value: Double(farenheitValue), unitCode: TemperatureUnit.farenheit.rawValue))
             let citiesListData = CitiesListData(city: city,
                                                 celciusTemperatureValue:celciusTemperatureValue,
                                                 farenheitTemperatureValue: farenheitTemperatureValue,
