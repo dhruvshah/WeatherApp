@@ -15,8 +15,13 @@ struct DailyWeatherView: View {
         VStack(alignment: .leading){
             ForEach(viewModel.forecastProperties, id: \.name) { data in
                 HStack(alignment:.center) {
-                    Text(data.name)
-                        .foregroundColor(Color.white)
+                    VStack (alignment: .leading){
+                        Text(data.name)
+                            .foregroundColor(Color.white)
+                        Text(data.shortForecast)
+                            .foregroundColor(Color.white)
+                            .font(Font.system(size: 10))
+                    }
                     Spacer()
                     AsyncImage(url: URL(string: data.icon)) { image in
                         image.resizable()
