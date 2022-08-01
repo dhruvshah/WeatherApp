@@ -33,6 +33,7 @@ final class CityListViewModel: ObservableObject{
         
     }
     
+    // Method to get Location Coordinates
     func getLocationCoordinates() {
         for city in cities {
             getCoordinates(city) {  location in
@@ -42,6 +43,7 @@ final class CityListViewModel: ObservableObject{
         }
     }
     
+    // Method to get coordinates based on city address
     func getCoordinates(_ address: String,completion:@escaping((CLLocationCoordinate2D) -> ())){
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(address) { (placemarks, error) in
@@ -50,6 +52,12 @@ final class CityListViewModel: ObservableObject{
         }
     }
     
+    /// Method to get location points from weather API sercive
+    ///
+    /// - Parameters:
+    ///   - locationurl: The url to get location points.
+    ///   - city: name of city.
+    ///   - completionHandler: used to notify result of the API action.
     func getLocation(url: URL, city: String, completionHandler: @escaping (Bool) -> Void) {
         DataManager<LocationData>.fetch(url: url) { [weak self] result in
             switch result {
@@ -73,6 +81,12 @@ final class CityListViewModel: ObservableObject{
         }
     }
     
+    /// Method to get observation station from weather API sercive
+    ///
+    /// - Parameters:
+    ///   - url: The url to get observation station.
+    ///   - city: name of city.
+    ///   - completionHandler: used to notify result of the API action.
     func getStation(url: URL, city: String, completion: @escaping (Bool) -> Void) {
         DataManager<Stations>.fetch(url: url) { result in
             switch result {
@@ -88,6 +102,12 @@ final class CityListViewModel: ObservableObject{
         }
     }
     
+    /// Method to get current weather from weather API sercive
+    ///
+    /// - Parameters:
+    ///   - url: The url to get current weather.
+    ///   - city: name of city.
+    ///   - completionHandler: used to notify result of the API action.
     func getCurrentWeatherData(url: URL, city: String, completion: @escaping (Bool) -> Void) {
         DataManager<CurrentData>.fetch(url: url) { result in
             switch result {
@@ -104,6 +124,12 @@ final class CityListViewModel: ObservableObject{
         }
     }
     
+    /// Method to update cities data and current weather from weather API sercive
+    ///
+    /// - Parameters:
+    ///   - data: Current Weather Condition data.
+    ///   - city: name of city.
+    ///   - completionHandler: used to notify result of the API action.
     func updateCitiesList(data: CurrentCondition, city: String, completion: @escaping (Bool) -> Void){
         DispatchQueue.main.async {
             guard let celciusValue = data.temperature.value else {

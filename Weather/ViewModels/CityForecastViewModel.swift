@@ -67,11 +67,14 @@ final class CityForecastViewModel: ObservableObject{
         guard let url = URL(string: forecastAPI) else {
             return
         }
-        self.getWeatherForecast(url: url, completion: { result in
-            
-        })
+        self.getWeatherForecast(url: url, completion: { result in })
     }
     
+    /// Method to get weekly weather forecast from weather API
+    ///
+    /// - Parameters:
+    ///   - url: The url to get weekly weather forecast of the selected city.
+    ///   - completionHandler: used to notify result of the API action.
     func getWeatherForecast(url: URL, completion: @escaping (Bool) -> Void) {
         DataManager<Forecast>.fetch(url: url) { result in
             DispatchQueue.main.async {
