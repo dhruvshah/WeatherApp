@@ -1,0 +1,27 @@
+/* 
+  Localized.strings
+  Weather
+
+  Created by Shah, Dhruv on 7/30/22.
+  
+*/
+
+//City List View
+"Weather" = "Weather";
+"PlaceHolder To Add New City" = "PlaceHolder To Add New City";
+"°C / °F" = "°C / °F";
+"°C" = "°C";
+"°F" = "°F";
+
+//Forecast View
+"WIND SPEED: " = "WIND SPEED: ";
+"HUMIDITY: " = "HUMIDITY: ";
+"PRECIPITATION: " = "PRECIPITATION: ";
+"Weekly Forecast" = "Weekly Forecast";
+"km/hr" = "km/hr";
+
+// Errors
+"The NWS API may be experiencing an interruption - please try again." = "The NWS API may be experiencing an interruption - please try again.";
+"The network is currently unavailable, please check your wifi or data connection." = "The network is currently unavailable, please check your wifi or data connection.";
+"An unexpected error has occurred. Please wait and try again." = "An unexpected error has occurred. Please wait and try again.";
+"Please check your selection; the National Weather Service cannot retrieve its data." = "Please check your selection; the National Weather Service cannot retrieve its data.";
