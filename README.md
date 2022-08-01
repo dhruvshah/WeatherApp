@@ -49,7 +49,7 @@ Build and run the project
 - More Unit tests
 
 ### Things to take in to account
-- Noticed some API error when getting location for `London, UK` city since `National Weather Service API` doesnot support it. This will be logged as error in getLocation API. Hence, removed the last location `London, UK`
+- Noticed some API error when getting location for `London, UK` city since `National Weather Service API` doesnot support it. This will be logged as error in getLocation API. Hence, the last location `London, UK` doesnot get populated with data.
 
 ### Author
 Dhruv Shah 
