@@ -34,6 +34,7 @@ class CityListViewModelTests: XCTestCase {
     
     func testGetResultForLocation_Success() throws {
         let locationExpectation = self.expectation(description: "get location expectation")
+        // Mock Location url
         let locationURL = APIEndpoint().locationUrl(latitude: 47.6174, longitude: -122.2017)
         XCTAssertEqual(APIEndpoint().baseURL.absoluteString, "https://api.weather.gov/")
         XCTAssertEqual(locationURL.absoluteString,"https://api.weather.gov/points/47.6174,-122.2017")
