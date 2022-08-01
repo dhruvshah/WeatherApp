@@ -26,6 +26,7 @@ Ability to view temperature in Celcius or Farenheit based on switch state.
 - Weather and weekly Forecast Detail view
 - Unit tests covering view models and binding
 - Async Image for image icon fetching
+- Toggle Switch to view temperatures in C/F
 
 ## Followed Architectures
 1. MVVM (Model-View-ViewModel) with binding
