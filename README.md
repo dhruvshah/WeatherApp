@@ -1,6 +1,6 @@
 ### Introduction  
-A simple project created using SwiftUI to show the use of Weather Forecast Data using REST Api in an iOS application.
-Openning the app you'll see a list of Cities along with current temperature. If you tap on city section, some more details about the weather and weekly forecast are shown.
+A simple project created using SwiftUI to show the use of Weather Forecast Data using `National Weather Service` REST Api in an iOS application.
+Opening the app you'll see a list of Cities along with current temperature. If you tap on city section, some more details about the weather and weekly forecast are shown.
 User can scroll down to see more weekly forecast details.
 Ability to view temperature in Celcius or Farenheit based on switch state.
 
@@ -47,6 +47,9 @@ Build and run the project
 - Add Image Caching to display weather icons (for eg. update SDWebImage or Kingfisher pod)
 - Hourly Forecast Update and render some more details on weather app
 - More Unit tests
+
+### Things to take in to account
+- Noticed some API error when getting location for `London, UK` city since `National Weather Service API` doesnot support it. This will be logged as error in getLocation API. Hence, removed the last location `London, UK`
 
 ### Author
 Dhruv Shah 
