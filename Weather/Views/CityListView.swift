@@ -12,7 +12,7 @@ struct CityListView : View {
     @ObservedObject var viewModel: CityListViewModel
     @State var isPresentingModal: Bool = false
     
-    @State private var isToggle : Bool = false
+    //@State private var isToggle : Bool = false
     
     var body: some View {
         NavigationView {
@@ -24,7 +24,7 @@ struct CityListView : View {
                         .foregroundColor(.white)
                     ScrollView {
                         ForEach(viewModel.citiesListData, id: \.city) { citiData in
-                            NavigationLink(destination: CityForecastView(viewModel: CityForecastViewModel(cityData: citiData))) {
+                            NavigationLink(destination: CityForecastView(viewModel: CityForecastViewModel(cityData: citiData, temperatureSwitchToggle: viewModel.temperatureSwitchToggle))) {
                                 HStack {
                                     Text(citiData.city)
                                     Spacer()
@@ -36,7 +36,7 @@ struct CityListView : View {
                                     .frame(width: 30, height: 30, alignment: .trailing)
                                     .cornerRadius(5)
                                 
-                                    Text(isToggle ? citiData.celciusTemperatureValue : citiData.farenheitTemperatureValue)
+                                    Text(viewModel.temperatureSwitchToggle ? citiData.celciusTemperatureValue : citiData.farenheitTemperatureValue)
                                         .frame(alignment: .trailing)
                                 }
                                 .padding(15)
@@ -48,7 +48,7 @@ struct CityListView : View {
 
                     }
                     HStack {
-                        Toggle(isOn: $isToggle){
+                        Toggle(isOn: $viewModel.temperatureSwitchToggle){
                             Text(Localized.temperatureUnitHeading)
                                 .font(.system(size: 14))
                                 .foregroundColor(Color.white)

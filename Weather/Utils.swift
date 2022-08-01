@@ -12,7 +12,7 @@ extension Temperature {
         let temperatureUnit = TemperatureUnit(rawValue: temperature.unitCode)
         var unitValue: String = ""
         switch temperatureUnit {
-        case .degrees:
+        case .celcius:
             unitValue = Localized.celcius
         case .farenheit:
             unitValue = Localized.farenheit
